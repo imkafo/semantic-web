@@ -1,0 +1,100 @@
+What's the title of Dev Null?
+
+>>Query:
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?title
+WHERE {
+  ?person 
+  	foaf:givenName "Dev";
+    foaf:familyName "Null";
+  	foaf:title ?title.
+}
+
+
+
+>>Result (Raw Response):
+{
+  "head": {
+    "vars": [ "title" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "title": { "type": "literal" , "value": "Mr" }
+      }
+    ]
+  }
+}
+
+
+
+>>Result (Table):
+title
+"Mr"
+
+****************************************************************
+Who knows Foo Bar?
+
+>>Query:
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?name
+WHERE {
+  ?subject foaf:knows ?object.
+  ?object foaf:name "Foo Bar".
+  ?subject foaf:name ?name.
+}
+
+
+
+>>Result (Raw Response):
+{
+  "head": {
+    "vars": [ "name" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "name": { "type": "literal" , "value": "Dev Null" }
+      }
+    ]
+  }
+}
+
+
+
+>>Result (Table):
+name
+"Dev Null"
+
+****************************************************************
+How many people are recorded in the dataset?
+
+>>Query:
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT (count(?person) as ?number)
+WHERE {
+  ?person rdf:type foaf:Person.
+}
+
+
+
+>>Result (Raw Response):
+{
+  "head": {
+    "vars": [ "number" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "number": { "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "type": "typed-literal" , "value": "2" }
+      }
+    ]
+  }
+}
+
+
+
+>>Result (Table):
+number
+2

@@ -1,0 +1,13 @@
+@prefix : <http://example.org/term/> .
+@prefix i: <http://example.org/inst/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+i:museion rdf:type :artMuseum .
+i:museion rdf:type :museum .
+i:museion rdf:type :tourismAttraction .
+i:museion rdf:type :tourismObject .
+i:museion rdf:type rdfs:Resource .
+i:chickenHut rdf:type tourismObject .
+i:chickenHut rdf:type rdfs:Resource .
+

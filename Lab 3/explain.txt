@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+conclusion 1 <http://example.org/inst/museion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/term/artMuseum> .
+
+Two facts are given:
+	fact 1: i:museion rdf:type :modernArtMuseum .
+	fact 2: p:modernArtMuseum rdfs:subClassOf :artMuseum .
+According to the rule:
+	rule 1: (?a rdf:type ?y) <- (?x rdfs:subClassOf ?y), (?a rdf:type ?x)
+We can conclude that:
+	conclusion 1: i:museion rdf:type :artMuseum .
+
+-------------------------------------------------------------------
+conclusion 2 <http://example.org/inst/museion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/term/museum> .
+
+Given that:
+	conclusion 1: i:museion rdf:type :artMuseum .
+	fact 3: :artMuseum rdfs:subClassOf :museum .
+According to the rule:
+	rule 1: (?a rdf:type ?y) <- (?x rdfs:subClassOf ?y), (?a rdf:type ?x)
+We can conclude that:
+	conclusion 2: i:museion rdf:type :museum .
+
+-------------------------------------------------------------------
+conclusion 3 <http://example.org/inst/museion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/term/tourismAttraction> .
+
+Given that:
+	conclusion 2: i:museion rdf:type :museum .
+	fact 4: :museum rdfs:subClassOf :tourismAttraction .
+According to the rule:
+	rule 1: (?a rdf:type ?y) <- (?x rdfs:subClassOf ?y), (?a rdf:type ?x)
+We can conclude that:
+	conclusion 3: i:museion rdf:type :tourismAttraction .
+
+-------------------------------------------------------------------
+conclusion 4 <http://example.org/inst/museion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/term/tourismObject> .
+
+Given that:
+	conclusion 3: i:museion rdf:type :tourismAttraction .
+	fact 5: conclusion 3: i:museion rdf:type :tourismAttraction .
+According to the rule:
+	rule 1: (?a rdf:type ?y) <- (?x rdfs:subClassOf ?y), (?a rdf:type ?x)
+	rule 2: (?a rdf:type rdfs:Class) -> (?a rdfs:subClassOf rdfs:Resource)
+We can conclude that:
+	conclusion 4: i:museion rdf:type :tourismObject
+
+-------------------------------------------------------------------
+conclusion 5 <http://example.org/inst/museion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Resource> .
+
+Given that:
+	fact 6: :hasTripAdvisorRating rdfs:domain :tourismObject;
+Since only rdfs:Resource can be the domain of a property, we can conlude that:
+	conclusion 5.1: :tourismObject rdf:type rdfs:Resource
+
+Further, given that:
+	conclusion 4: i:museion rdf:type :tourismObject
+According to the rule:
+	rule 1: (?a rdf:type ?y) <- (?x rdfs:subClassOf ?y), (?a rdf:type ?x)
+	rule 2: (?a rdf:type rdfs:Class) -> (?a rdfs:subClassOf rdfs:Resource)
+We can conclude that:
+	conclusion 5: i:museion rdf:type rdfs:Resource
+
+-------------------------------------------------------------------
+conclusion 6 <http://example.org/inst/chickenHut> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/term/tourismObject> .
+
+Given that:
+	fact 6: :hasTripAdvisorRating rdfs:domain :tourismObject;
+	fact 7: i:chickenHut :hasTripAdvisorRating "3.5"^^xsd:decimal .
+According to the definition of rdfs:domain, we can conclude that:
+	conclusion 6: i:chickenHut rdf:type tourismObject
+
+-------------------------------------------------------------------
+conclusion 7 <http://example.org/inst/chickenHut> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Resource> .
+
+Given that:
+	conclusion 5.1: :tourismObject rdf:type rdfs:Resource
+	conclusion 6: i:chickenHut rdf:type tourismObject
+According to the rule:
+	rule 1: (?a rdf:type ?y) <- (?x rdfs:subClassOf ?y), (?a rdf:type ?x)
+	rule 2: (?a rdf:type rdfs:Class) -> (?a rdfs:subClassOf rdfs:Resource)
+We can conclude that:
+	conclusion 7: i:chickenHut rdf:type rdfs:Resource
+
+

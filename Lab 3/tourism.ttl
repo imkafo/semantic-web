@@ -1,0 +1,21 @@
+@prefix : <http://example.org/term/> .
+@prefix i: <http://example.org/inst/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:museum rdfs:subClassOf :tourismAttraction .
+:artMuseum rdfs:subClassOf :museum .
+:modernArtMuseum rdfs:subClassOf :artMuseum .
+:historyMuseum rdfs:subClassOf :museum .
+:landmark rdfs:subClassOf :tourismAttraction .
+:outdoorSpot rdfs:subClassOf :tourismAttraction .
+:amusementPark rdfs:subClassOf :tourismAttraction .
+:restaurant rdfs:subClassOf :tourismObject .
+:hotel rdfs:subClassOf :tourismObject .
+:tourismAttraction rdfs:subClassOf :tourismObject .
+:hasTripAdvisorRating rdfs:domain :tourismObject;
+    rdfs:subClassOf :hasRating .
+:hasHotel rdfs:range :hotel .
+i:museion rdf:type :modernArtMuseum .
+i:chickenHut :hasTripAdvisorRating "3.5"^^xsd:decimal .

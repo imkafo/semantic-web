@@ -1,0 +1,25 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ex: <http://example.org/>.
+
+ex:dev-null
+	rdf:type foaf:Person;
+	foaf:title "Mr";
+	foaf:name "Dev Null";
+	foaf:givenName "Dev";
+	foaf:familyName "Null";
+	foaf:mbox "mailto:devnull@example.org";
+	foaf:homepage "http://example.org/dev-null";
+	foaf:img "http://example.org/dev-null/dev-null.png";
+	foaf:phone "87654321";
+	foaf:knows ex:foo-bar;
+	ex:fav_movie <http://data.linkedmdb.org/resource/film/1025>;
+	ex:fav_food "noodle";
+	foaf:age "25";
+	foaf:nick "devvy";
+	foaf:weblog "http://example.org/dev-null/blog".
+	
+ex:foo-bar
+	rdf:type foaf:Person;
+	foaf:name "Foo Bar".
+

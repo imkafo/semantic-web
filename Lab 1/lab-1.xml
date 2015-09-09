@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:ns0="http://example.org/">
+
+  <foaf:Person rdf:about="http://example.org/dev-null">
+    <foaf:title>Mr</foaf:title>
+    <foaf:name>Dev Null</foaf:name>
+    <foaf:givenName>Dev</foaf:givenName>
+    <foaf:familyName>Null</foaf:familyName>
+    <foaf:mbox>mailto:devnull@example.org</foaf:mbox>
+    <foaf:homepage>http://example.org/dev-null</foaf:homepage>
+    <foaf:img>http://example.org/dev-null/dev-null.png</foaf:img>
+    <foaf:phone>87654321</foaf:phone>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://example.org/foo-bar">
+        <foaf:name>Foo Bar</foaf:name>
+      </foaf:Person>
+    </foaf:knows>
+    <ns0:fav_movie rdf:resource="http://data.linkedmdb.org/resource/film/1025"/>
+    <ns0:fav_food>noodle</ns0:fav_food>
+    <foaf:age>25</foaf:age>
+    <foaf:nick>devvy</foaf:nick>
+    <foaf:weblog>http://example.org/dev-null/blog</foaf:weblog>
+  </foaf:Person>
+
+</rdf:RDF>
